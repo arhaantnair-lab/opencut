@@ -29,7 +29,7 @@ export interface EffectDragData extends BaseDragData {
 
 export interface TransitionDragData extends BaseDragData {
 	type: "transition";
-	transitionType: "fade" | "cross-dissolve";
+	transitionType: "fade-in" | "fade-out" | "cross-dissolve";
 }
 
 export type TimelineDragData =

@@ -87,7 +87,7 @@ export interface LibraryAudioElement extends BaseAudioElement {
 export type AudioElement = UploadAudioElement | LibraryAudioElement;
 
 export interface ElementTransition {
-	type: "fade" | "cross-dissolve";
+	type: "fade-in" | "fade-out" | "cross-dissolve";
 	duration: number;
 }
 

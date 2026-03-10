@@ -5,38 +5,40 @@ import { getColorChannelForPath } from "./color-channel";
 import { getNumberChannelForPath } from "./number-channel";
 
 export function resolveTransitionsOpacity({
-transitions,
-localTime,
-duration,
+    transitions,
+    localTime,
+    duration,
 }: {
-transitions: { in?: ElementTransition; out?: ElementTransition } | undefined;
-localTime: number;
-duration: number;
+    transitions: { in?: ElementTransition; out?: ElementTransition } | undefined;
+    localTime: number;
+    duration: number;
 }): number {
-if (!transitions) return 1.0;
+    if (!transitions) return 1.0;
 
-let opacity = 1.0;
+    let opacity = 1.0;
 
-if (transitions.in) {
-const { type, duration: transitionDuration } = transitions.in;
-if (transitionDuration > 0 && localTime < transitionDuration) {
-if (type === "fade" || type === "cross-dissolve") {
-opacity *= localTime / transitionDuration;
-}
-}
-}
+    // Handle transition in
+    if (transitions.in) {
+        const { type, duration: transitionDuration } = transitions.in;
+        if (transitionDuration > 0 && localTime < transitionDuration) {
+            if (type === "fade-in" || type === "cross-dissolve") {
+                opacity *= localTime / transitionDuration;
+            }
+        }
+    }
 
-if (transitions.out) {
-const { type, duration: transitionDuration } = transitions.out;
-if (transitionDuration > 0 && localTime > duration - transitionDuration) {
-if (type === "fade" || type === "cross-dissolve") {
-const timeFromEnd = Math.max(0, duration - localTime);
-opacity *= timeFromEnd / transitionDuration;
-}
-}
-}
+    // Handle transition out
+    if (transitions.out) {
+        const { type, duration: transitionDuration } = transitions.out;
+        if (transitionDuration > 0 && localTime > duration - transitionDuration) {
+            if (type === "fade-out" || type === "cross-dissolve") {
+                const timeFromEnd = Math.max(0, duration - localTime);
+                opacity *= timeFromEnd / transitionDuration;
+            }
+        }
+    }
 
-return Math.max(0, Math.min(1, opacity));
+    return Math.max(0, Math.min(1, opacity));
 }
 
 export function getElementLocalTime({

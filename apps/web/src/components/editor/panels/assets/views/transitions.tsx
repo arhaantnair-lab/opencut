@@ -59,7 +59,7 @@ function TransitionItem({ transition }: { transition: TransitionDefinition }) {
 		});
 	}, [editor, selectedElements, transition.type]);
 
-	const icon = transition.type === "fade" ? TransitionLeftIcon : TransitionRightIcon;
+	const icon = transition.type === "fade-in" ? TransitionLeftIcon : TransitionRightIcon;
 
 	const preview = (
 		<div className="flex size-full items-center justify-center bg-accent/50 text-accent-foreground">
