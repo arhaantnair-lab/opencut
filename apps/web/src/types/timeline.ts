@@ -87,8 +87,8 @@ export interface LibraryAudioElement extends BaseAudioElement {
 export type AudioElement = UploadAudioElement | LibraryAudioElement;
 
 export interface ElementTransition {
-	type: "fade-in" | "fade-out" | "cross-dissolve";
-	duration: number;
+        type: "fade-in" | "fade-out" | "cross-dissolve" | "zoom-in" | "zoom-out" | "slide-left" | "slide-right";
+        duration: number;
 }
 
 interface BaseTimelineElement {
@@ -253,3 +253,4 @@ export interface ClipboardItem {
 	trackType: TrackType;
 	element: CreateTimelineElement;
 }
+

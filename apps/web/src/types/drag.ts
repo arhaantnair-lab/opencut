@@ -1,40 +1,40 @@
 import type { VisualElement } from "./timeline";
 
-interface BaseDragData {
-	id: string;
-	name: string;
+export interface BaseDragData {
+    id: string;
+    name: string;
 }
 
 export interface MediaDragData extends BaseDragData {
-	type: "media";
-	mediaType: "image" | "video" | "audio";
-	targetElementTypes?: ("video" | "image")[];
+    type: "media";
+    mediaType: "image" | "video" | "audio";
+    targetElementTypes?: ("video" | "image")[];
 }
 
 export interface TextDragData extends BaseDragData {
-	type: "text";
-	content: string;
+    type: "text";
+    content: string;
 }
 
 export interface StickerDragData extends BaseDragData {
-	type: "sticker";
-	stickerId: string;
+    type: "sticker";
+    stickerId: string;
 }
 
 export interface EffectDragData extends BaseDragData {
-	type: "effect";
-	effectType: string;
-	targetElementTypes: VisualElement["type"][];
+    type: "effect";
+    effectType: string;
+    targetElementTypes: VisualElement["type"][];
 }
 
 export interface TransitionDragData extends BaseDragData {
-	type: "transition";
-	transitionType: "fade-in" | "fade-out" | "cross-dissolve";
+    type: "transition";
+    transitionType: "fade-in" | "fade-out" | "cross-dissolve" | "zoom-in" | "zoom-out" | "slide-left" | "slide-right";
 }
 
 export type TimelineDragData =
-	| MediaDragData
-	| TextDragData
-	| StickerDragData
-	| EffectDragData
-	| TransitionDragData;
+    | MediaDragData
+    | TextDragData
+    | StickerDragData
+    | EffectDragData
+    | TransitionDragData;

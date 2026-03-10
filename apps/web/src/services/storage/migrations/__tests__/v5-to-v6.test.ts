@@ -35,7 +35,7 @@ describe("V5 to V6 Migration", () => {
 				version: 6,
 				scenes: [
 					{
-						...(v5Project as { scenes: unknown[] }).scenes[0],
+						...(v5Project as { scenes: unknown[] }).scenes[0] as object,
 						bookmarks: [{ time: 2 }, { time: 5 }],
 					},
 				],
@@ -90,3 +90,4 @@ describe("V5 to V6 Migration", () => {
 		]);
 	});
 });
+
